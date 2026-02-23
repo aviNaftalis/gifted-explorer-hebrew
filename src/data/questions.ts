@@ -1,4 +1,4 @@
-export type QuestionCategory = 'word-relations' | 'sentence-completion' | 'math-problems' | 'number-sequences' | 'general-knowledge';
+export type QuestionCategory = 'word-relations' | 'sentence-completion' | 'math-problems' | 'number-sequences' | 'general-knowledge' | 'shape-sequences';
 
 export interface Question {
   id: number;
@@ -9,7 +9,15 @@ export interface Question {
   options: string[];
   correctIndex: number;
   explanation: string;
+  image?: string; // optional image URL for visual questions
 }
+
+// Import shape sequence images
+import shapeSeq1 from '@/assets/shape-sequence-1.jpg';
+import shapeSeq2 from '@/assets/shape-sequence-2.jpg';
+import shapeSeq3 from '@/assets/shape-sequence-3.jpg';
+import shapeSeq4 from '@/assets/shape-sequence-4.jpg';
+import shapeSeq5 from '@/assets/shape-sequence-5.jpg';
 
 export const questions: Question[] = [
   // יחסי מילים
@@ -94,12 +102,12 @@ export const questions: Question[] = [
     correctIndex: 1,
     explanation: 'אמא רוצה שהחדר יהיה מסודר לפני שהן צופות בטלוויזיה.',
   },
-  // בעיות בחשבון (מהשאלות המקוריות)
+  // בעיות בחשבון
   {
     id: 9,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'חמישה חברים קנו תחפושת. כל אחד שילם 16 שקלים, וכל אחד קיבל 2 שקלים עודף בחזרה. כמה עלתה התחפושת?',
     options: ['60 שקלים', '80 שקלים', '70 שקלים', '58 שקלים'],
     correctIndex: 2,
@@ -109,7 +117,7 @@ export const questions: Question[] = [
     id: 10,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'לדנה יש 24 סוכריות. היא חילקה אותן שווה בשווה בין 4 חברות. כמה סוכריות קיבלה כל חברה?',
     options: ['4', '8', '6', '12'],
     correctIndex: 2,
@@ -119,7 +127,7 @@ export const questions: Question[] = [
     id: 11,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'אוטובוס יצא עם 30 נוסעים. בתחנה הראשונה ירדו 8 ועלו 5. כמה נוסעים באוטובוס עכשיו?',
     options: ['25', '27', '23', '35'],
     correctIndex: 1,
@@ -129,18 +137,17 @@ export const questions: Question[] = [
     id: 12,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'לעומר יש 3 מדפים. בכל מדף 7 ספרים. כמה ספרים יש לעומר?',
     options: ['10', '24', '21', '18'],
     correctIndex: 2,
     explanation: '3 כפול 7 שווה 21 ספרים.',
   },
-  // בעיות בחשבון חדשות (מגולות)
   {
     id: 13,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'ליואב 45 שקלים. ב-15 שקלים קנה אלבום מונדיאל, ובשאר הכסף קנה חפיסות קלפים ב-5 שקלים כל אחת. כמה חפיסות קנה?',
     options: ['5', '15', '4', '6'],
     correctIndex: 3,
@@ -150,7 +157,7 @@ export const questions: Question[] = [
     id: 14,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'בבניין 8 קומות. בשתי הקומות הראשונות 2 דירות בלבד. בכל קומה נוספת 4 דירות. כמה דירות בבניין?',
     options: ['24', '8', '16', '28'],
     correctIndex: 3,
@@ -160,7 +167,7 @@ export const questions: Question[] = [
     id: 15,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'בחבילת גולות 50 גולות. 17 אדומות, 14 ירוקות, והשאר לבנות. כמה גולות לבנות?',
     options: ['23', '26', '19', '15'],
     correctIndex: 2,
@@ -170,7 +177,7 @@ export const questions: Question[] = [
     id: 16,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'ליותם 12 מכוניות אדומות ו-23 סגולות. לארבל 9 אופנועים. כמה כלי רכב באוסף המשותף?',
     options: ['35', '32', '44', '34'],
     correctIndex: 2,
@@ -180,7 +187,7 @@ export const questions: Question[] = [
     id: 17,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'בכיתה 32 תלמידים. כל תלמיד נתן חצי שקל למתנה למנהל. כמה כסף אספו?',
     options: ['32 שקלים', '16 שקלים', '8 שקלים', '3 שקלים'],
     correctIndex: 1,
@@ -190,7 +197,7 @@ export const questions: Question[] = [
     id: 18,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'בספרייה 200 ספרים ישנים. מחצית נתרמו למעון ילדים, 60 נמכרו. כמה ספרים נשארו?',
     options: ['100 ספרים', '40 ספרים', '60 ספרים', '50 ספרים'],
     correctIndex: 1,
@@ -200,7 +207,7 @@ export const questions: Question[] = [
     id: 19,
     category: 'math-problems',
     categoryLabel: 'בעיות בחשבון',
-    categoryEmoji: '🔢',
+    categoryEmoji: '🧮',
     prompt: 'שון רוצה לקנות בובה ב-9 שקלים. יש לו 6 שקלים ו-20 אגורות. כמה חסר לו?',
     options: ['שקל ו-80 אגורות', '2 שקלים ו-80 אגורות', '2 שקלים ו-20 אגורות', '3 שקלים ו-20 אגורות'],
     correctIndex: 1,
@@ -393,12 +400,69 @@ export const questions: Question[] = [
     correctIndex: 2,
     explanation: 'הפתגם מלמד שגבורה אמיתית היא היכולת לשלוט בעצמך ולהתאפק.',
   },
+  // רצפי צורות (שאלות עם תמונות)
+  {
+    id: 37,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'הסתכלו על רצף הצורות. מה הצורה הבאה?',
+    image: shapeSeq1,
+    options: ['חץ שמאלה', 'חץ ימינה', 'חץ למעלה', 'חץ למטה'],
+    correctIndex: 2,
+    explanation: 'החץ מסתובב בכיוון השעון בכל שלב. לאחר חץ שמאלה, הבא הוא חץ למעלה.',
+  },
+  {
+    id: 38,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'איזו צורה צריכה להיות במקום סימן השאלה?',
+    image: shapeSeq2,
+    options: ['עיגול אדום', 'ריבוע כחול', 'עיגול כחול', 'ריבוע אדום'],
+    correctIndex: 0,
+    explanation: 'בתבנית הזו, העיגול האדום והריבוע הכחול מתחלפים. במקום סימן השאלה צריך להיות עיגול אדום.',
+  },
+  {
+    id: 39,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'כמה נקודות צריכות להיות בתיבה הבאה?',
+    image: shapeSeq3,
+    options: ['8', '10', '12', '15'],
+    correctIndex: 1,
+    explanation: 'מספר הנקודות הולך וגדל: 1, 6, 10. ההפרשים גדלים ולכן הבא הוא 10.',
+  },
+  {
+    id: 40,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'מה ממשיך את הרצף?',
+    image: shapeSeq4,
+    options: ['משולש קטן מאוד', 'משולש ענק', 'ריבוע ירוק', 'עיגול ירוק'],
+    correctIndex: 1,
+    explanation: 'המשולשים הולכים וגדלים בכל שלב, ולכן הבא ברצף הוא משולש ענק.',
+  },
+  {
+    id: 41,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'מה צריך להופיע במקום סימן השאלה?',
+    image: shapeSeq5,
+    options: ['עיגול כחול', 'ריבוע אדום', 'עיגול אדום', 'ריבוע כחול'],
+    correctIndex: 1,
+    explanation: 'הדפוס מתחלף: עיגול, ריבוע. הצבעים מתחלפים: אדום, כחול. לכן הבא הוא ריבוע אדום.',
+  },
 ];
 
-export const categoryInfo: Record<QuestionCategory, { label: string; emoji: string; color: string }> = {
-  'word-relations': { label: 'יחסי מילים', emoji: '🔗', color: 'primary' },
-  'sentence-completion': { label: 'השלמת משפטים', emoji: '✏️', color: 'secondary' },
-  'math-problems': { label: 'בעיות בחשבון', emoji: '🔢', color: 'coral' },
-  'number-sequences': { label: 'סדרות מספרים', emoji: '🔢', color: 'primary' },
-  'general-knowledge': { label: 'ידע כללי', emoji: '🌍', color: 'secondary' },
+export const categoryInfo: Record<QuestionCategory, { label: string; emoji: string; color: string; description: string }> = {
+  'word-relations': { label: 'יחסי מילים', emoji: '🔗', color: 'primary', description: 'מצאו את הקשר בין המילים' },
+  'sentence-completion': { label: 'השלמת משפטים', emoji: '✏️', color: 'secondary', description: 'השלימו את המשפט עם המילה הנכונה' },
+  'math-problems': { label: 'בעיות בחשבון', emoji: '🧮', color: 'coral', description: 'פתרו בעיות חשבון מאתגרות' },
+  'number-sequences': { label: 'סדרות מספרים', emoji: '🔢', color: 'primary', description: 'גלו את החוקיות בסדרת המספרים' },
+  'general-knowledge': { label: 'ידע כללי', emoji: '🌍', color: 'secondary', description: 'שאלות מעניינות על העולם' },
+  'shape-sequences': { label: 'רצפי צורות', emoji: '🔷', color: 'accent', description: 'מצאו את הצורה שממשיכה את הרצף' },
 };

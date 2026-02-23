@@ -73,8 +73,9 @@ const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
           className="mt-6 flex justify-center gap-4 text-sm text-muted-foreground"
         >
           <span className="bg-muted rounded-full px-3 py-1">🔗 יחסי מילים</span>
-          <span className="bg-muted rounded-full px-3 py-1">✏️ השלמת משפטים</span>
+          <span className="bg-muted rounded-full px-3 py-1">✏️ משפטים</span>
           <span className="bg-muted rounded-full px-3 py-1">🔢 חשבון</span>
+          <span className="bg-muted rounded-full px-3 py-1">🔷 צורות</span>
         </motion.div>
       </motion.div>
     </div>

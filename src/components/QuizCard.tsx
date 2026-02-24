@@ -61,6 +61,18 @@ const QuizCard = ({ question, onAnswer, questionNumber, timerDuration = 0 }: Qui
         className="w-full max-w-2xl mx-auto"
       >
         <div className="bg-card rounded-2xl shadow-fun p-6 md:p-8 border-2 border-border">
+          {/* Timer */}
+          {timerDuration > 0 && (
+            <div className="mb-4">
+              <QuizTimer
+                key={question.id}
+                duration={timerDuration}
+                onTimeUp={handleTimeUp}
+                isPaused={showResult}
+              />
+            </div>
+          )}
+
           {/* Category badge */}
           <motion.div
             initial={{ scale: 0 }}

@@ -124,6 +124,8 @@ const QuizCard = ({ question, onAnswer, questionNumber, timerDuration = 0 }: Qui
                 }
               }
 
+              const isShapeCategory = question.category === 'shape-sequences';
+
               return (
                 <motion.button
                   key={index}
@@ -136,11 +138,11 @@ const QuizCard = ({ question, onAnswer, questionNumber, timerDuration = 0 }: Qui
                   disabled={showResult}
                   className={`w-full text-right p-4 rounded-xl font-semibold text-lg transition-all duration-200 ${optionColors[index]} ${stateClass} cursor-pointer disabled:cursor-default`}
                 >
-                  <span className="flex items-center gap-3">
+                  <span className={`flex items-center gap-3 ${isShapeCategory ? 'justify-center' : ''}`}>
                     <span className="bg-card/20 rounded-full w-8 h-8 flex items-center justify-center text-sm shrink-0">
                       {index + 1}
                     </span>
-                    {option}
+                    <span className={isShapeCategory ? 'text-4xl leading-none' : ''}>{option}</span>
                   </span>
                 </motion.button>
               );

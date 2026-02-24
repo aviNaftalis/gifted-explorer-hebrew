@@ -2,11 +2,13 @@ import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Question } from '@/data/questions';
 import Confetti from './Confetti';
+import QuizTimer from './QuizTimer';
 
 interface QuizCardProps {
   question: Question;
   onAnswer: (correct: boolean) => void;
   questionNumber: number;
+  timerDuration?: number; // seconds, 0 = no timer
 }
 
 const optionColors = [

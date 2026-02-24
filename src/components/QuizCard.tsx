@@ -18,10 +18,17 @@ const optionColors = [
   'bg-accent hover:bg-accent/90 text-accent-foreground',
 ];
 
-const QuizCard = ({ question, onAnswer, questionNumber }: QuizCardProps) => {
+const QuizCard = ({ question, onAnswer, questionNumber, timerDuration = 0 }: QuizCardProps) => {
   const [selected, setSelected] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+
+  const handleTimeUp = useCallback(() => {
+    if (showResult) return;
+    // Auto-select wrong answer when time runs out
+    setSelected(-1);
+    setShowResult(true);
+  }, [showResult]);
 
   const handleSelect = useCallback((index: number) => {
     if (showResult) return;

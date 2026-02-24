@@ -12,12 +12,8 @@ export interface Question {
   image?: string; // optional image URL for visual questions
 }
 
-// Import shape sequence images
+// Import shape sequence image
 import shapeSeq1 from '@/assets/shape-sequence-1.jpg';
-import shapeSeq2 from '@/assets/shape-sequence-2.jpg';
-import shapeSeq3 from '@/assets/shape-sequence-3.jpg';
-import shapeSeq4 from '@/assets/shape-sequence-4.jpg';
-import shapeSeq5 from '@/assets/shape-sequence-5.jpg';
 
 export const questions: Question[] = [
   // יחסי מילים

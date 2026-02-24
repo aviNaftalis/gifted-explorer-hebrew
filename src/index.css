@@ -42,6 +42,9 @@
     --sunny: 45 95% 58%;
     --sunny-foreground: 40 50% 20%;
 
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
     --border: 210 25% 88%;
     --input: 210 25% 88%;
     --ring: 174 60% 45%;

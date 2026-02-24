@@ -14,20 +14,25 @@ const Index = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<QuestionCategory | 'all'>('all');
+  const [questionLimit, setQuestionLimit] = useState<number>(0); // 0 = all
+  const [timerEnabled, setTimerEnabled] = useState(false);
 
   const filteredQuestions = useMemo(() => {
     const filtered = selectedCategory === 'all'
       ? [...questions]
       : questions.filter((q) => q.category === selectedCategory);
-    return filtered.sort(() => Math.random() - 0.5);
-  }, [screen, selectedCategory]); // reshuffle on restart
+    const shuffled = filtered.sort(() => Math.random() - 0.5);
+    return questionLimit > 0 ? shuffled.slice(0, questionLimit) : shuffled;
+  }, [screen, selectedCategory, questionLimit]); // reshuffle on restart
 
   const handleStart = () => {
     setScreen('category');
   };
 
-  const handleSelectCategory = (category: QuestionCategory | 'all') => {
+  const handleSelectCategory = (category: QuestionCategory | 'all', limit: number, timer: boolean) => {
     setSelectedCategory(category);
+    setQuestionLimit(limit);
+    setTimerEnabled(timer);
     setCurrentIndex(0);
     setScore(0);
     setScreen('quiz');
@@ -85,6 +90,7 @@ const Index = () => {
             question={filteredQuestions[currentIndex]}
             onAnswer={handleAnswer}
             questionNumber={currentIndex + 1}
+            timerDuration={timerEnabled ? 45 : 0}
           />
         </AnimatePresence>
       </div>

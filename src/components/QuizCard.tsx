@@ -2,11 +2,13 @@ import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Question } from '@/data/questions';
 import Confetti from './Confetti';
+import QuizTimer from './QuizTimer';
 
 interface QuizCardProps {
   question: Question;
   onAnswer: (correct: boolean) => void;
   questionNumber: number;
+  timerDuration?: number; // seconds, 0 = no timer
 }
 
 const optionColors = [
@@ -16,10 +18,17 @@ const optionColors = [
   'bg-accent hover:bg-accent/90 text-accent-foreground',
 ];
 
-const QuizCard = ({ question, onAnswer, questionNumber }: QuizCardProps) => {
+const QuizCard = ({ question, onAnswer, questionNumber, timerDuration = 0 }: QuizCardProps) => {
   const [selected, setSelected] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+
+  const handleTimeUp = useCallback(() => {
+    if (showResult) return;
+    // Auto-select wrong answer when time runs out
+    setSelected(-1);
+    setShowResult(true);
+  }, [showResult]);
 
   const handleSelect = useCallback((index: number) => {
     if (showResult) return;
@@ -52,6 +61,18 @@ const QuizCard = ({ question, onAnswer, questionNumber }: QuizCardProps) => {
         className="w-full max-w-2xl mx-auto"
       >
         <div className="bg-card rounded-2xl shadow-fun p-6 md:p-8 border-2 border-border">
+          {/* Timer */}
+          {timerDuration > 0 && (
+            <div className="mb-4">
+              <QuizTimer
+                key={question.id}
+                duration={timerDuration}
+                onTimeUp={handleTimeUp}
+                isPaused={showResult}
+              />
+            </div>
+          )}
+
           {/* Category badge */}
           <motion.div
             initial={{ scale: 0 }}
@@ -139,10 +160,14 @@ const QuizCard = ({ question, onAnswer, questionNumber }: QuizCardProps) => {
                 <div className={`rounded-xl p-4 ${selected === question.correctIndex ? 'bg-success/10 border-2 border-success/30' : 'bg-destructive/10 border-2 border-destructive/30'}`}>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-2xl">
-                      {selected === question.correctIndex ? '🌟' : '💪'}
+                      {selected === question.correctIndex ? '🌟' : selected === -1 ? '⏰' : '💪'}
                     </span>
                     <span className="font-bold text-lg">
-                      {selected === question.correctIndex ? 'כל הכבוד! תשובה נכונה!' : 'לא נורא, בפעם הבאה!'}
+                      {selected === question.correctIndex
+                        ? 'כל הכבוד! תשובה נכונה!'
+                        : selected === -1
+                          ? 'נגמר הזמן!'
+                          : 'לא נורא, בפעם הבאה!'}
                     </span>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">{question.explanation}</p>

@@ -12,12 +12,8 @@ export interface Question {
   image?: string; // optional image URL for visual questions
 }
 
-// Import shape sequence images
-import shapeSeq1 from '@/assets/shape-sequence-1.jpg';
-import shapeSeq2 from '@/assets/shape-sequence-2.jpg';
-import shapeSeq3 from '@/assets/shape-sequence-3.jpg';
-import shapeSeq4 from '@/assets/shape-sequence-4.jpg';
-import shapeSeq5 from '@/assets/shape-sequence-5.jpg';
+// Import shape sequence image
+import shapeSeq1 from '@/assets/shape-sequence-1.svg';
 
 export const questions: Question[] = [
   // יחסי מילים
@@ -400,61 +396,17 @@ export const questions: Question[] = [
     correctIndex: 2,
     explanation: 'הפתגם מלמד שגבורה אמיתית היא היכולת לשלוט בעצמך ולהתאפק.',
   },
-  // רצפי צורות (שאלות עם תמונות)
+  // רצפי צורות (שאלה אחת איכותית עם אפשרויות צורה)
   {
     id: 37,
     category: 'shape-sequences',
     categoryLabel: 'רצפי צורות',
     categoryEmoji: '🔷',
-    prompt: 'הסתכלו על הרצף בתמונה. מה צריך להופיע במקום סימן השאלה?',
+    prompt: 'איזו צורה משלימה נכון את הרצף שבתמונה?',
     image: shapeSeq1,
-    options: ['חץ למעלה', 'חץ למטה', 'חץ שמאלה', 'חץ ימינה'],
-    correctIndex: 0,
-    explanation: 'הרצף מראה צורות שמשתנות לפי דפוס קבוע. בדקו את הכיוון של כל צורה כדי למצוא את החוקיות.',
-  },
-  {
-    id: 38,
-    category: 'shape-sequences',
-    categoryLabel: 'רצפי צורות',
-    categoryEmoji: '🔷',
-    prompt: 'הסתכלו על הדפוס בתמונה. מה חסר?',
-    image: shapeSeq2,
-    options: ['עיגול אדום', 'ריבוע כחול', 'עיגול כחול', 'ריבוע אדום'],
-    correctIndex: 0,
-    explanation: 'בדפוס הזה הצורות מתחלפות בין עיגולים לריבועים, והצבעים בין אדום לכחול. לכן התשובה היא עיגול אדום.',
-  },
-  {
-    id: 39,
-    category: 'shape-sequences',
-    categoryLabel: 'רצפי צורות',
-    categoryEmoji: '🔷',
-    prompt: 'כמה נקודות צריכות להיות בתיבה הבאה?',
-    image: shapeSeq3,
-    options: ['4', '5', '6', '3'],
-    correctIndex: 0,
-    explanation: 'מספר הנקודות גדל לפי דפוס קבוע: 1, 2, 4. ההפרשים הולכים וגדלים. התשובה הבאה היא 4 נקודות.',
-  },
-  {
-    id: 40,
-    category: 'shape-sequences',
-    categoryLabel: 'רצפי צורות',
-    categoryEmoji: '🔷',
-    prompt: 'מה ממשיך את הרצף בתמונה?',
-    image: shapeSeq4,
-    options: ['משולש גדול יותר', 'משולש קטן', 'ריבוע ירוק', 'עיגול ירוק'],
-    correctIndex: 0,
-    explanation: 'המשולשים הולכים וגדלים בכל שלב. הצורה הבאה היא משולש גדול עוד יותר.',
-  },
-  {
-    id: 41,
-    category: 'shape-sequences',
-    categoryLabel: 'רצפי צורות',
-    categoryEmoji: '🔷',
-    prompt: 'מה צריך להופיע במקום החסר בטבלה?',
-    image: shapeSeq5,
-    options: ['עיגול אדום', 'ריבוע כחול', 'ריבוע אדום', 'עיגול כחול'],
-    correctIndex: 0,
-    explanation: 'בכל שורה ועמודה יש דפוס של צורות וצבעים שמתחלפים. עקבו אחרי הדפוס כדי למצוא את התשובה.',
+    options: ['▲', '■', '⬟', '⬢'],
+    correctIndex: 3,
+    explanation: 'ברצף מספר הצלעות גדל: משולש (3), ריבוע (4), מחומש (5), ולכן הצורה הבאה היא משושה (6).',
   },
 ];
 

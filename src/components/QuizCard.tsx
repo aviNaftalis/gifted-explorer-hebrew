@@ -160,10 +160,14 @@ const QuizCard = ({ question, onAnswer, questionNumber, timerDuration = 0 }: Qui
                 <div className={`rounded-xl p-4 ${selected === question.correctIndex ? 'bg-success/10 border-2 border-success/30' : 'bg-destructive/10 border-2 border-destructive/30'}`}>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-2xl">
-                      {selected === question.correctIndex ? '🌟' : '💪'}
+                      {selected === question.correctIndex ? '🌟' : selected === -1 ? '⏰' : '💪'}
                     </span>
                     <span className="font-bold text-lg">
-                      {selected === question.correctIndex ? 'כל הכבוד! תשובה נכונה!' : 'לא נורא, בפעם הבאה!'}
+                      {selected === question.correctIndex
+                        ? 'כל הכבוד! תשובה נכונה!'
+                        : selected === -1
+                          ? 'נגמר הזמן!'
+                          : 'לא נורא, בפעם הבאה!'}
                     </span>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">{question.explanation}</p>

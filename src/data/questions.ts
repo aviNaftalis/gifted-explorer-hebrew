@@ -13,7 +13,7 @@ export interface Question {
 }
 
 // Import shape sequence image
-import shapeSeq1 from '@/assets/shape-sequence-1.jpg';
+import shapeSeq1 from '@/assets/shape-sequence-1.svg';
 
 export const questions: Question[] = [
   // יחסי מילים

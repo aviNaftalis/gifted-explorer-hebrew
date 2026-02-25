@@ -12,8 +12,13 @@ export interface Question {
   image?: string; // optional image URL for visual questions
 }
 
-// Import shape sequence image
+// Import shape sequence images
 import shapeSeq1 from '@/assets/shape-sequence-1.svg';
+import shapeSeq2 from '@/assets/shape-sequence-2.svg';
+import shapeSeq3 from '@/assets/shape-sequence-3.svg';
+import shapeSeq4 from '@/assets/shape-sequence-4.svg';
+import shapeSeq5 from '@/assets/shape-sequence-5.svg';
+import shapeSeq6 from '@/assets/shape-sequence-6.svg';
 
 export const questions: Question[] = [
   // יחסי מילים
@@ -396,17 +401,72 @@ export const questions: Question[] = [
     correctIndex: 2,
     explanation: 'הפתגם מלמד שגבורה אמיתית היא היכולת לשלוט בעצמך ולהתאפק.',
   },
-  // רצפי צורות (שאלה אחת איכותית עם אפשרויות צורה)
+  // רצפי צורות
   {
     id: 37,
     category: 'shape-sequences',
     categoryLabel: 'רצפי צורות',
     categoryEmoji: '🔷',
-    prompt: 'איזו צורה משלימה נכון את הרצף שבתמונה?',
+    prompt: 'מספר הצלעות גדל בכל שלב. איזו צורה ממשיכה את הרצף?',
     image: shapeSeq1,
     options: ['▲', '■', '⬟', '⬢'],
     correctIndex: 3,
-    explanation: 'ברצף מספר הצלעות גדל: משולש (3), ריבוע (4), מחומש (5), ולכן הצורה הבאה היא משושה (6).',
+    explanation: 'ברצף מספר הצלעות גדל: משולש (3), ריבוע (4), מחומש (5), ולכן הצורה הבאה היא משושה (6 צלעות).',
+  },
+  {
+    id: 38,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'החץ מסתובב בכיוון השעון. לאיזה כיוון יצביע החץ הבא?',
+    image: shapeSeq2,
+    options: ['⬆', '⬇', '⬅', '➡'],
+    correctIndex: 2,
+    explanation: 'החץ מסתובב 90 מעלות בכיוון השעון בכל שלב: למעלה → ימינה → למטה → שמאלה.',
+  },
+  {
+    id: 39,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'בכל שורה יש צורה שחוזרת עם כמות שגדלה. מה חסר בתא האחרון?',
+    image: shapeSeq3,
+    options: ['▲▲▲', '●●●', '■■■', '▲▲'],
+    correctIndex: 0,
+    explanation: 'בשורה הראשונה עיגולים (1,2,3), בשנייה ריבועים (1,2,3), ובשלישית משולשים (1,2,?). לכן חסרים 3 משולשים.',
+  },
+  {
+    id: 40,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'הצורה הפנימית משתנה בכל שלב. מה הצורה הבאה בתוך העיגול?',
+    image: shapeSeq4,
+    options: ['◆', '★', '⬠', '⬡'],
+    correctIndex: 0,
+    explanation: 'בתוך העיגול יש רצף צורות: עיגול (0 פינות), ריבוע (4 פינות), משולש (3 פינות). הצורה הבאה היא מעוין (◆) - 4 פינות בזווית.',
+  },
+  {
+    id: 41,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'הריבוע השחור מסתובב בכיוון השעון. באיזה מקום יהיה הריבוע השחור?',
+    image: shapeSeq5,
+    options: ['◰', '◳', '◲', '◱'],
+    correctIndex: 3,
+    explanation: 'הריבוע השחור מסתובב בכיוון השעון: שמאל-למעלה → ימין-למעלה → ימין-למטה → שמאל-למטה (◱).',
+  },
+  {
+    id: 42,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'מספר הנקודות גדל לפי חוקיות. כמה נקודות צריכות להיות בצורה הבאה?',
+    image: shapeSeq6,
+    options: ['8', '10', '9', '7'],
+    correctIndex: 1,
+    explanation: 'מספר הנקודות הוא מספרים משולשיים: 1, 3, 6, 10. ההפרשים הם 2, 3, 4 - ולכן הבא הוא +4 = 10 נקודות.',
   },
 ];
 

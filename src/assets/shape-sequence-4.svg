@@ -1,34 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" role="img" aria-label="Dot count pattern puzzle">
-  <rect width="900" height="400" fill="#ffffff"/>
-
-  <!-- Title -->
-  <text x="450" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#222">איזו צורה משלימה את הרצף?</text>
-
-  <!-- Boxes -->
-  <g stroke="#333" stroke-width="4" fill="none">
-    <rect x="60" y="65" width="150" height="150" rx="12"/>
-    <rect x="240" y="65" width="150" height="150" rx="12"/>
-    <rect x="420" y="65" width="150" height="150" rx="12"/>
-    <rect x="600" y="65" width="150" height="150" rx="12"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" dir="rtl">
+  <rect width="900" height="300" fill="#ffffff"/>
+  <text x="450" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#222">?איזו צורה משלימה את הרצף</text>
+  <g stroke="#333" stroke-width="3.5" fill="none">
+    <rect x="60" y="60" width="150" height="150" rx="12"/>
+    <rect x="240" y="60" width="150" height="150" rx="12"/>
+    <rect x="420" y="60" width="150" height="150" rx="12"/>
+    <rect x="600" y="60" width="150" height="150" rx="12"/>
   </g>
-
-  <!-- Box 1: small circle inside big circle -->
-  <circle cx="135" cy="140" r="45" fill="none" stroke="#222" stroke-width="5"/>
-  <circle cx="135" cy="140" r="15" fill="#222"/>
-
-  <!-- Box 2: small square inside big circle -->
-  <circle cx="315" cy="140" r="45" fill="none" stroke="#222" stroke-width="5"/>
-  <rect x="300" y="125" width="30" height="30" fill="#222"/>
-
-  <!-- Box 3: small triangle inside big circle -->
-  <circle cx="495" cy="140" r="45" fill="none" stroke="#222" stroke-width="5"/>
-  <polygon points="495,118 510,152 480,152" fill="#222"/>
-
+  <!-- Box 1: triangle (3 sides) inside circle -->
+  <circle cx="135" cy="135" r="50" fill="none" stroke="#222" stroke-width="4"/>
+  <polygon points="135,100 160,150 110,150" fill="#222"/>
+  <!-- Box 2: square (4 sides) inside circle -->
+  <circle cx="315" cy="135" r="50" fill="none" stroke="#222" stroke-width="4"/>
+  <rect x="295" y="115" width="40" height="40" fill="#222"/>
+  <!-- Box 3: pentagon (5 sides) inside circle -->
+  <circle cx="495" cy="135" r="50" fill="none" stroke="#222" stroke-width="4"/>
+  <polygon points="495,110 515,126 508,148 482,148 475,126" fill="#222"/>
   <!-- Box 4: ? -->
-  <text x="675" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#222">?</text>
-
-  <!-- Divider -->
-  <line x1="60" y1="250" x2="840" y2="250" stroke="#333" stroke-width="3"/>
-
-  <text x="450" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#444">הצורה הפנימית משתנה. מה הצורה הבאה?</text>
+  <text x="675" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="65" font-weight="700" fill="#222">?</text>
+  <line x1="60" y1="240" x2="840" y2="240" stroke="#333" stroke-width="2"/>
+  <text x="450" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#444">מספר הצלעות של הצורה הפנימית עולה בכל שלב</text>
 </svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320" dir="rtl">
+  <rect width="900" height="320" fill="#fff"/>
+  <text x="450" y="35" text-anchor="middle" font-family="Arial" font-size="24" font-weight="700" fill="#222">?מה חסר בתא האחרון</text>
+  <!-- 2x2 Matrix grid -->
+  <g stroke="#333" stroke-width="3.5" fill="none">
+    <rect x="250" y="55" width="140" height="140" rx="10"/>
+    <rect x="410" y="55" width="140" height="140" rx="10"/>
+    <rect x="250" y="215" width="140" height="140" rx="10"/>
+    <rect x="410" y="215" width="140" height="140" rx="10"/>
+  </g>
+  <!-- Row/Col labels -->
+  <line x1="250" y1="205" x2="550" y2="205" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+  <!-- Top-left: filled circle -->
+  <circle cx="320" cy="125" r="35" fill="#222"/>
+  <!-- Top-right: empty circle -->
+  <circle cx="480" cy="125" r="35" fill="none" stroke="#222" stroke-width="4"/>
+  <!-- Bottom-left: filled square -->
+  <rect x="285" y="250" width="70" height="70" fill="#222"/>
+  <!-- Bottom-right: ? -->
+  <text x="480" y="305" text-anchor="middle" font-size="55" font-weight="700" fill="#222">?</text>
+  <text x="450" y="185" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">בכל שורה: מלא → ריק. בכל עמודה: עיגול → ריבוע</text>
+</svg>

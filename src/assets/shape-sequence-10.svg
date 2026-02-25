@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" dir="rtl">
+  <rect width="900" height="300" fill="#fff"/>
+  <text x="450" y="35" text-anchor="middle" font-family="Arial" font-size="24" font-weight="700" fill="#222">?כמה נקודות בתא הבא</text>
+  <g stroke="#333" stroke-width="3" fill="none">
+    <rect x="60" y="55" width="150" height="170" rx="10"/>
+    <rect x="240" y="55" width="150" height="170" rx="10"/>
+    <rect x="420" y="55" width="150" height="170" rx="10"/>
+    <rect x="600" y="55" width="150" height="170" rx="10"/>
+  </g>
+  <!-- Box1: 1 dot -->
+  <circle cx="135" cy="140" r="8" fill="#222"/>
+  <!-- Box2: 4 dots (2x2) -->
+  <circle cx="295" cy="115" r="8" fill="#222"/>
+  <circle cx="335" cy="115" r="8" fill="#222"/>
+  <circle cx="295" cy="155" r="8" fill="#222"/>
+  <circle cx="335" cy="155" r="8" fill="#222"/>
+  <!-- Box3: 9 dots (3x3) -->
+  <circle cx="465" cy="100" r="7" fill="#222"/>
+  <circle cx="495" cy="100" r="7" fill="#222"/>
+  <circle cx="525" cy="100" r="7" fill="#222"/>
+  <circle cx="465" cy="135" r="7" fill="#222"/>
+  <circle cx="495" cy="135" r="7" fill="#222"/>
+  <circle cx="525" cy="135" r="7" fill="#222"/>
+  <circle cx="465" cy="170" r="7" fill="#222"/>
+  <circle cx="495" cy="170" r="7" fill="#222"/>
+  <circle cx="525" cy="170" r="7" fill="#222"/>
+  <!-- Box4: ? -->
+  <text x="675" y="160" text-anchor="middle" font-size="60" font-weight="700" fill="#222">?</text>
+  <line x1="60" y1="250" x2="840" y2="250" stroke="#333" stroke-width="2"/>
+  <text x="450" y="280" text-anchor="middle" font-family="Arial" font-size="20" fill="#444">מספרים ריבועיים: 1, 4, 9, ...?</text>
+</svg>

@@ -19,6 +19,16 @@ import shapeSeq3 from '@/assets/shape-sequence-3.svg';
 import shapeSeq4 from '@/assets/shape-sequence-4.svg';
 import shapeSeq5 from '@/assets/shape-sequence-5.svg';
 import shapeSeq6 from '@/assets/shape-sequence-6.svg';
+import shapeSeq7 from '@/assets/shape-sequence-7.svg';
+import shapeSeq8 from '@/assets/shape-sequence-8.svg';
+import shapeSeq9 from '@/assets/shape-sequence-9.svg';
+import shapeSeq10 from '@/assets/shape-sequence-10.svg';
+import shapeSeq11 from '@/assets/shape-sequence-11.svg';
+import shapeSeq12 from '@/assets/shape-sequence-12.svg';
+import shapeSeq13 from '@/assets/shape-sequence-13.svg';
+import shapeSeq14 from '@/assets/shape-sequence-14.svg';
+import shapeSeq15 from '@/assets/shape-sequence-15.svg';
+import shapeSeq16 from '@/assets/shape-sequence-16.svg';
 
 export const questions: Question[] = [
   // יחסי מילים
@@ -440,11 +450,11 @@ export const questions: Question[] = [
     category: 'shape-sequences',
     categoryLabel: 'רצפי צורות',
     categoryEmoji: '🔷',
-    prompt: 'הצורה הפנימית משתנה בכל שלב. מה הצורה הבאה בתוך העיגול?',
+    prompt: 'הצורה הפנימית משתנה - מספר הצלעות עולה. מה הצורה הבאה בתוך העיגול?',
     image: shapeSeq4,
-    options: ['◆', '★', '⬠', '⬡'],
-    correctIndex: 0,
-    explanation: 'בתוך העיגול יש רצף צורות: עיגול (0 פינות), ריבוע (4 פינות), משולש (3 פינות). הצורה הבאה היא מעוין (◆) - 4 פינות בזווית.',
+    options: ['◆', '⬡', '★', '●'],
+    correctIndex: 1,
+    explanation: 'הצורות הפנימיות הולכות וגדלות במספר הצלעות: משולש (3), ריבוע (4), מחומש (5). הצורה הבאה היא משושה ⬡ (6 צלעות).',
   },
   {
     id: 41,
@@ -467,6 +477,117 @@ export const questions: Question[] = [
     options: ['8', '10', '9', '7'],
     correctIndex: 1,
     explanation: 'מספר הנקודות הוא מספרים משולשיים: 1, 3, 6, 10. ההפרשים הם 2, 3, 4 - ולכן הבא הוא +4 = 10 נקודות.',
+  },
+  // שאלות צורות נוספות
+  {
+    id: 43,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'הדפוס חוזר על עצמו: ●■▲●■ — מה הצורה הבאה?',
+    image: shapeSeq7,
+    options: ['●', '■', '▲', '⬟'],
+    correctIndex: 2,
+    explanation: 'הדפוס חוזר מחזורית: עיגול, ריבוע, משולש. אחרי ●■ הצורה הבאה היא ▲.',
+  },
+  {
+    id: 44,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'מספר הריבועים יורד בכל שלב. כמה ריבועים בתא הבא?',
+    image: shapeSeq8,
+    options: ['1', '0', '2', '3'],
+    correctIndex: 0,
+    explanation: 'הכמות יורדת ב-1 בכל שלב: 4, 3, 2, ולכן הבא הוא 1.',
+  },
+  {
+    id: 45,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'הדפוס מתחלף: מלא, ריק, מלא, ריק. מה הבא?',
+    image: shapeSeq9,
+    options: ['○', '●', '■', '□'],
+    correctIndex: 0,
+    explanation: 'הרצף מתחלף בין עיגול מלא (●) לעיגול ריק (○). אחרי מלא הבא הוא ריק: ○.',
+  },
+  {
+    id: 46,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'כמה נקודות בתא הבא? (רשת גדלה)',
+    image: shapeSeq10,
+    options: ['12', '14', '16', '20'],
+    correctIndex: 2,
+    explanation: 'מספרים ריבועיים: 1 (1×1), 4 (2×2), 9 (3×3). הבא הוא 16 (4×4).',
+  },
+  {
+    id: 47,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'החצי המלא מסתובב 90° בכיוון השעון. מה הבא?',
+    image: shapeSeq11,
+    options: ['◒', '◑', '◓', '◐'],
+    correctIndex: 0,
+    explanation: 'החצי השחור מסתובב בכיוון השעון: ימין → למטה → שמאל → הבא הוא למעלה. התשובה: ◒ (חצי תחתון מלא).',
+  },
+  {
+    id: 48,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'בכל שלב מתווספת צורה אחת. כמה צורות בתא הבא?',
+    image: shapeSeq12,
+    options: ['3', '4', '5', '2'],
+    correctIndex: 1,
+    explanation: 'מספר הצורות עולה ב-1 בכל שלב: 1, 2, 3, ולכן הבא הוא 4 צורות.',
+  },
+  {
+    id: 49,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'המשולש מסתובב 90° בכיוון השעון. לאיזה כיוון יצביע הבא?',
+    image: shapeSeq13,
+    options: ['◄', '►', '▲', '▼'],
+    correctIndex: 0,
+    explanation: 'המשולש מסתובב בכיוון השעון: למעלה ▲ → ימינה ► → למטה ▼ → הבא: שמאלה ◄.',
+  },
+  {
+    id: 50,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'מטריצה 2×2: בכל שורה מלא→ריק, בכל עמודה עיגול→ריבוע. מה חסר?',
+    image: shapeSeq14,
+    options: ['□', '■', '○', '●'],
+    correctIndex: 0,
+    explanation: 'בשורה העליונה: עיגול מלא, עיגול ריק. בשורה התחתונה: ריבוע מלא, ולכן חסר ריבוע ריק □.',
+  },
+  {
+    id: 51,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'מספר הצלעות יורד: משושה (6), מחומש (5), ריבוע (4). מה הבא?',
+    image: shapeSeq15,
+    options: ['▲', '●', '◆', '⬟'],
+    correctIndex: 0,
+    explanation: 'מספר הצלעות יורד ב-1 בכל שלב: 6, 5, 4. הבא הוא 3 צלעות = משולש ▲.',
+  },
+  {
+    id: 52,
+    category: 'shape-sequences',
+    categoryLabel: 'רצפי צורות',
+    categoryEmoji: '🔷',
+    prompt: 'הכמות מוכפלת בכל שלב: 1, 2, 4. כמה נקודות בתא הבא?',
+    image: shapeSeq16,
+    options: ['6', '8', '10', '7'],
+    correctIndex: 1,
+    explanation: 'הכמות מוכפלת פי 2 בכל שלב: 1, 2, 4. הבא הוא 8 נקודות.',
   },
 ];
 

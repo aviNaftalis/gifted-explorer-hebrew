@@ -67,6 +67,20 @@ const WelcomeScreen = ({ onStart, onHistory }: WelcomeScreenProps) => {
           🚀 יאללה, מתחילים!
         </motion.button>
 
+        {onHistory && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onHistory}
+            className="mt-4 block mx-auto text-muted-foreground font-semibold text-lg px-6 py-2 rounded-xl hover:bg-muted transition-colors"
+          >
+            📊 היסטוריית ציונים
+          </motion.button>
+        )}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

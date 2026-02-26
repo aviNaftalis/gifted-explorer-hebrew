@@ -5,11 +5,13 @@ import CategorySelectScreen from '@/components/CategorySelectScreen';
 import QuizCard from '@/components/QuizCard';
 import ProgressBar from '@/components/ProgressBar';
 import ResultsScreen from '@/components/ResultsScreen';
+import HistoryScreen from '@/components/HistoryScreen';
 import TestTimer from '@/components/TestTimer';
 import { questions, QuestionCategory } from '@/data/questions';
 import { shuffleWithSeed } from '@/lib/seededRandom';
+import { saveTestResult } from '@/lib/progressStorage';
 
-type Screen = 'welcome' | 'category' | 'quiz' | 'results';
+type Screen = 'welcome' | 'category' | 'quiz' | 'results' | 'history';
 
 const Index = () => {
   const [screen, setScreen] = useState<Screen>('welcome');

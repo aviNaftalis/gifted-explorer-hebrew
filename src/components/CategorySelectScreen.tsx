@@ -1,36 +1,49 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { QuestionCategory, categoryInfo, questions } from '@/data/questions';
+import { shuffleWithSeed } from '@/lib/seededRandom';
 
 interface CategorySelectScreenProps {
-  onSelectCategory: (category: QuestionCategory | 'all', limit: number, timer: boolean) => void;
+  onSelectCategory: (category: QuestionCategory | 'all', testNumber: number, timer: boolean, seed: number) => void;
   onBack: () => void;
 }
-
-const testSizes = [
-  { label: '5 שאלות (מהיר)', value: 5, emoji: '⚡' },
-  { label: '10 שאלות (בינוני)', value: 10, emoji: '📝' },
-  { label: 'כל השאלות', value: 0, emoji: '📚' },
-];
 
 const CategorySelectScreen = ({ onSelectCategory, onBack }: CategorySelectScreenProps) => {
   const categories = Object.entries(categoryInfo) as [QuestionCategory, typeof categoryInfo[QuestionCategory]][];
   const [selectedCat, setSelectedCat] = useState<QuestionCategory | 'all' | null>(null);
   const [timerEnabled, setTimerEnabled] = useState(false);
+  const [seed, setSeed] = useState(() => Math.floor(Math.random() * 100000));
 
   const getQuestionCount = (cat: QuestionCategory | 'all') =>
     cat === 'all' ? questions.length : questions.filter((q) => q.category === cat).length;
+
+  const testsForCategory = useMemo(() => {
+    if (selectedCat === null) return [];
+    const filtered = selectedCat === 'all'
+      ? [...questions]
+      : questions.filter((q) => q.category === selectedCat);
+    const shuffled = shuffleWithSeed(filtered, seed);
+    const count = Math.ceil(shuffled.length / 10);
+    return Array.from({ length: count }, (_, i) => ({
+      number: i + 1,
+      size: Math.min(10, shuffled.length - i * 10),
+    }));
+  }, [selectedCat, seed]);
 
   const handleCategoryClick = (cat: QuestionCategory | 'all') => {
     setSelectedCat(cat);
   };
 
-  const handleStartTest = (limit: number) => {
+  const handleStartTest = (testNumber: number) => {
     if (!selectedCat) return;
-    onSelectCategory(selectedCat, limit, timerEnabled);
+    onSelectCategory(selectedCat, testNumber, timerEnabled, seed);
   };
 
-  // If a category is selected, show test size options
+  const handleReshuffle = () => {
+    setSeed(Math.floor(Math.random() * 100000));
+  };
+
+  // Test selection screen
   if (selectedCat !== null) {
     const totalAvailable = getQuestionCount(selectedCat);
     const catLabel = selectedCat === 'all' ? 'כל השאלות' : categoryInfo[selectedCat].label;
@@ -46,7 +59,7 @@ const CategorySelectScreen = ({ onSelectCategory, onBack }: CategorySelectScreen
           <div className="text-center mb-6">
             <span className="text-5xl mb-2 block">{catEmoji}</span>
             <h2 className="text-2xl md:text-3xl font-black text-gradient-fun mb-1">{catLabel}</h2>
-            <p className="text-muted-foreground">{totalAvailable} שאלות זמינות</p>
+            <p className="text-muted-foreground">{totalAvailable} שאלות • {testsForCategory.length} מבחנים</p>
           </div>
 
           {/* Timer toggle */}
@@ -70,32 +83,36 @@ const CategorySelectScreen = ({ onSelectCategory, onBack }: CategorySelectScreen
             </button>
           </div>
 
-          {/* Test size buttons */}
-          <div className="grid gap-3">
-            {testSizes.map((size) => {
-              const count = size.value === 0 ? totalAvailable : Math.min(size.value, totalAvailable);
-              if (size.value > 0 && size.value > totalAvailable) return null;
+          {/* Reshuffle button */}
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleReshuffle}
+            className="w-full mb-4 bg-muted text-foreground font-semibold py-3 rounded-2xl border-2 border-border flex items-center justify-center gap-2"
+          >
+            <span className="text-xl">🔀</span>
+            <span>ערבב שאלות מחדש</span>
+          </motion.button>
 
-              return (
-                <motion.button
-                  key={size.value}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => handleStartTest(size.value)}
-                  className="bg-card rounded-2xl border-2 border-border p-4 text-right shadow-fun hover:shadow-candy transition-shadow flex items-center gap-3"
-                >
-                  <span className="text-3xl">{size.emoji}</span>
-                  <div>
-                    <span className="font-bold text-lg">{size.value === 0 ? `כל השאלות (${count})` : size.label}</span>
-                    {timerEnabled && (
-                      <p className="text-xs text-muted-foreground">
-                        זמן משוער: {Math.ceil(count * 0.75)} דקות
-                      </p>
-                    )}
-                  </div>
-                </motion.button>
-              );
-            })}
+          {/* Test buttons */}
+          <div className="grid gap-3">
+            {testsForCategory.map((test) => (
+              <motion.button
+                key={test.number}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => handleStartTest(test.number)}
+                className="bg-card rounded-2xl border-2 border-border p-4 text-right shadow-fun hover:shadow-candy transition-shadow flex items-center gap-3"
+              >
+                <span className="text-3xl bg-muted rounded-full w-12 h-12 flex items-center justify-center font-black text-foreground shrink-0">
+                  {test.number}
+                </span>
+                <div>
+                  <span className="font-bold text-lg">מבחן {test.number}</span>
+                  <p className="text-sm text-muted-foreground">{test.size} שאלות</p>
+                </div>
+              </motion.button>
+            ))}
           </div>
 
           <motion.button
@@ -128,7 +145,7 @@ const CategorySelectScreen = ({ onSelectCategory, onBack }: CategorySelectScreen
             בחרו נושא לתרגול
           </h2>
           <p className="text-muted-foreground text-lg">
-            בחרו נושא ואז את אורך המבחן!
+            בחרו נושא ואז מבחן של 10 שאלות!
           </p>
         </div>
 
@@ -166,7 +183,7 @@ const CategorySelectScreen = ({ onSelectCategory, onBack }: CategorySelectScreen
                 </div>
                 <p className="text-sm text-muted-foreground">{info.description}</p>
                 <div className="mt-2 text-xs font-semibold bg-muted rounded-full px-3 py-1 inline-block">
-                  {count} שאלות
+                  {count} שאלות • {Math.ceil(count / 10)} מבחנים
                 </div>
               </motion.button>
             );

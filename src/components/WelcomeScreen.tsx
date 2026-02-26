@@ -2,11 +2,12 @@ import { motion } from 'framer-motion';
 
 interface WelcomeScreenProps {
   onStart: () => void;
+  onHistory?: () => void;
 }
 
 const floatingEmojis = ['🌟', '🧠', '🚀', '📚', '✨', '💡', '🎯', '🏆'];
 
-const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
+const WelcomeScreen = ({ onStart, onHistory }: WelcomeScreenProps) => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
       {/* Floating background emojis */}

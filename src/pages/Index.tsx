@@ -58,7 +58,18 @@ const Index = () => {
     if (correct) setScore((s) => s + 1);
 
     if (currentIndex + 1 >= currentTest.length) {
-      setTimeout(() => setScreen('results'), 300);
+      setTimeout(() => {
+        const finalScore = correct ? score + 1 : score;
+        saveTestResult({
+          category: selectedCategory,
+          testNumber,
+          score: finalScore,
+          total: currentTest.length,
+          timeSeconds: totalTime,
+          seed,
+        });
+        setScreen('results');
+      }, 300);
     } else {
       setCurrentIndex((i) => i + 1);
     }

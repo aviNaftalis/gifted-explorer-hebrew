@@ -5,11 +5,13 @@ import CategorySelectScreen from '@/components/CategorySelectScreen';
 import QuizCard from '@/components/QuizCard';
 import ProgressBar from '@/components/ProgressBar';
 import ResultsScreen from '@/components/ResultsScreen';
+import HistoryScreen from '@/components/HistoryScreen';
 import TestTimer from '@/components/TestTimer';
 import { questions, QuestionCategory } from '@/data/questions';
 import { shuffleWithSeed } from '@/lib/seededRandom';
+import { saveTestResult } from '@/lib/progressStorage';
 
-type Screen = 'welcome' | 'category' | 'quiz' | 'results';
+type Screen = 'welcome' | 'category' | 'quiz' | 'results' | 'history';
 
 const Index = () => {
   const [screen, setScreen] = useState<Screen>('welcome');
@@ -56,7 +58,18 @@ const Index = () => {
     if (correct) setScore((s) => s + 1);
 
     if (currentIndex + 1 >= currentTest.length) {
-      setTimeout(() => setScreen('results'), 300);
+      setTimeout(() => {
+        const finalScore = correct ? score + 1 : score;
+        saveTestResult({
+          category: selectedCategory,
+          testNumber,
+          score: finalScore,
+          total: currentTest.length,
+          timeSeconds: totalTime,
+          seed,
+        });
+        setScreen('results');
+      }, 300);
     } else {
       setCurrentIndex((i) => i + 1);
     }
@@ -74,7 +87,11 @@ const Index = () => {
   };
 
   if (screen === 'welcome') {
-    return <WelcomeScreen onStart={handleStart} />;
+    return <WelcomeScreen onStart={handleStart} onHistory={() => setScreen('history')} />;
+  }
+
+  if (screen === 'history') {
+    return <HistoryScreen onBack={() => setScreen('welcome')} />;
   }
 
   if (screen === 'category') {

@@ -1,11 +1,13 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import CategorySelectScreen from '@/components/CategorySelectScreen';
 import QuizCard from '@/components/QuizCard';
 import ProgressBar from '@/components/ProgressBar';
 import ResultsScreen from '@/components/ResultsScreen';
+import TestTimer from '@/components/TestTimer';
 import { questions, QuestionCategory } from '@/data/questions';
+import { shuffleWithSeed } from '@/lib/seededRandom';
 
 type Screen = 'welcome' | 'category' | 'quiz' | 'results';
 
@@ -14,44 +16,61 @@ const Index = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<QuestionCategory | 'all'>('all');
-  const [questionLimit, setQuestionLimit] = useState<number>(0); // 0 = all
+  const [testNumber, setTestNumber] = useState(1);
   const [timerEnabled, setTimerEnabled] = useState(false);
+  const [totalTime, setTotalTime] = useState(0);
+  const [seed, setSeed] = useState(1);
 
-  const filteredQuestions = useMemo(() => {
+  // Split questions into tests of 10 using seed-based shuffling
+  const testQuestions = useMemo(() => {
     const filtered = selectedCategory === 'all'
       ? [...questions]
       : questions.filter((q) => q.category === selectedCategory);
-    const shuffled = filtered.sort(() => Math.random() - 0.5);
-    return questionLimit > 0 ? shuffled.slice(0, questionLimit) : shuffled;
-  }, [screen, selectedCategory, questionLimit]); // reshuffle on restart
+    const shuffled = shuffleWithSeed(filtered, seed);
+    const testsCount = Math.ceil(shuffled.length / 10);
+    const tests: typeof filtered[] = [];
+    for (let i = 0; i < testsCount; i++) {
+      tests.push(shuffled.slice(i * 10, (i + 1) * 10));
+    }
+    return tests;
+  }, [selectedCategory, seed]);
+
+  const currentTest = testQuestions[testNumber - 1] || testQuestions[0] || [];
 
   const handleStart = () => {
     setScreen('category');
   };
 
-  const handleSelectCategory = (category: QuestionCategory | 'all', limit: number, timer: boolean) => {
+  const handleSelectCategory = (category: QuestionCategory | 'all', selectedTest: number, timer: boolean, newSeed: number) => {
     setSelectedCategory(category);
-    setQuestionLimit(limit);
+    setTestNumber(selectedTest);
     setTimerEnabled(timer);
+    setSeed(newSeed);
     setCurrentIndex(0);
     setScore(0);
+    setTotalTime(0);
     setScreen('quiz');
   };
 
   const handleAnswer = (correct: boolean) => {
     if (correct) setScore((s) => s + 1);
 
-    if (currentIndex + 1 >= filteredQuestions.length) {
+    if (currentIndex + 1 >= currentTest.length) {
       setTimeout(() => setScreen('results'), 300);
     } else {
       setCurrentIndex((i) => i + 1);
     }
   };
 
+  const handleTimeUpdate = useCallback((seconds: number) => {
+    setTotalTime(seconds);
+  }, []);
+
   const handleRestart = () => {
     setScreen('category');
     setCurrentIndex(0);
     setScore(0);
+    setTotalTime(0);
   };
 
   if (screen === 'welcome') {
@@ -71,7 +90,8 @@ const Index = () => {
     return (
       <ResultsScreen
         score={score}
-        total={filteredQuestions.length}
+        total={currentTest.length}
+        totalTime={totalTime}
         onRestart={handleRestart}
       />
     );
@@ -80,14 +100,20 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col p-4 md:p-8">
       <div className="max-w-2xl mx-auto w-full mb-6">
-        <ProgressBar current={currentIndex + 1} total={filteredQuestions.length} />
+        <div className="flex items-center justify-between mb-3">
+          <TestTimer isRunning={screen === 'quiz'} onTimeUpdate={handleTimeUpdate} />
+          <div className="text-sm font-semibold text-muted-foreground bg-card rounded-full px-3 py-1 border border-border">
+            מבחן {testNumber}
+          </div>
+        </div>
+        <ProgressBar current={currentIndex + 1} total={currentTest.length} />
       </div>
 
       <div className="flex-1 flex items-center">
         <AnimatePresence mode="wait">
           <QuizCard
-            key={filteredQuestions[currentIndex].id}
-            question={filteredQuestions[currentIndex]}
+            key={currentTest[currentIndex].id}
+            question={currentTest[currentIndex]}
             onAnswer={handleAnswer}
             questionNumber={currentIndex + 1}
             timerDuration={timerEnabled ? 45 : 0}

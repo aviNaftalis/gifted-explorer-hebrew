@@ -87,7 +87,11 @@ const Index = () => {
   };
 
   if (screen === 'welcome') {
-    return <WelcomeScreen onStart={handleStart} />;
+    return <WelcomeScreen onStart={handleStart} onHistory={() => setScreen('history')} />;
+  }
+
+  if (screen === 'history') {
+    return <HistoryScreen onBack={() => setScreen('welcome')} />;
   }
 
   if (screen === 'category') {

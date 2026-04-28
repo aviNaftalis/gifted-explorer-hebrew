@@ -15,7 +15,7 @@
   <circle cx="480" cy="125" r="35" fill="none" stroke="#222" stroke-width="3"/>
 
   <!-- BL: Filled triangle -->
-  <polygon points="320,90 285,160 355,160" fill="#222" stroke="none"/>
+  <polygon points="320,250 285,320 355,320" fill="#222" stroke="none"/>
 
   <!-- BR: ? -->
   <text x="480" y="305" text-anchor="middle" font-size="55" font-weight="700" fill="#222">?</text>

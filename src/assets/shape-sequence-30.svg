@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#222">מה הגודל הבא ברצף?</text>
+  <g stroke="#333" stroke-width="4" fill="none">
+    <rect x="60" y="65" width="150" height="150" rx="12"/>
+    <rect x="240" y="65" width="150" height="150" rx="12"/>
+    <rect x="420" y="65" width="150" height="150" rx="12"/>
+    <rect x="600" y="65" width="150" height="150" rx="12"/>
+  </g>
+  <!-- Box 1: Large triangle (~50px tall) -->
+  <polygon points="135,105 160,165 110,165" stroke="#222" stroke-width="3" fill="none"/>
+  <!-- Box 2: Small triangle (~25px tall) -->
+  <polygon points="315,127 327,152 303,152" stroke="#222" stroke-width="3" fill="none"/>
+  <!-- Box 3: Large triangle -->
+  <polygon points="495,105 520,165 470,165" stroke="#222" stroke-width="3" fill="none"/>
+  <!-- Box 4: Question mark -->
+  <text x="675" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#222">?</text>
+  <line x1="60" y1="250" x2="840" y2="250" stroke="#333" stroke-width="3"/>
+  <text x="450" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#444">הצורות מתחלפות בין גדולה לקטנה</text>
+</svg>

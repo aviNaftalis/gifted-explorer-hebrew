@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#222">לאיזה כיוון יצביע המחוג?</text>
+  <g stroke="#333" stroke-width="4" fill="none">
+    <rect x="60" y="65" width="150" height="150" rx="12"/>
+    <rect x="240" y="65" width="150" height="150" rx="12"/>
+    <rect x="420" y="65" width="150" height="150" rx="12"/>
+    <rect x="600" y="65" width="150" height="150" rx="12"/>
+  </g>
+  <!-- Box 1: Clock at 12 o'clock -->
+  <circle cx="135" cy="140" r="35" stroke="#222" stroke-width="3" fill="none"/>
+  <line x1="135" y1="140" x2="135" y2="108" stroke="#222" stroke-width="3"/>
+  <!-- Box 2: Clock at 3 o'clock -->
+  <circle cx="315" cy="140" r="35" stroke="#222" stroke-width="3" fill="none"/>
+  <line x1="315" y1="140" x2="347" y2="140" stroke="#222" stroke-width="3"/>
+  <!-- Box 3: Clock at 6 o'clock -->
+  <circle cx="495" cy="140" r="35" stroke="#222" stroke-width="3" fill="none"/>
+  <line x1="495" y1="140" x2="495" y2="172" stroke="#222" stroke-width="3"/>
+  <!-- Box 4: Question mark -->
+  <text x="675" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#222">?</text>
+  <line x1="60" y1="250" x2="840" y2="250" stroke="#333" stroke-width="3"/>
+  <text x="450" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#444">המחוג מסתובב בכיוון השעון</text>
+</svg>

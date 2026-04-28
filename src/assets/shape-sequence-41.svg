@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320">
+  <rect width="900" height="320" fill="#fff"/>
+  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#222">?מה חסר בתא האחרון</text>
+  <g stroke="#333" stroke-width="3.5" fill="none">
+    <rect x="250" y="55" width="140" height="140" rx="10"/>
+    <rect x="410" y="55" width="140" height="140" rx="10"/>
+    <rect x="250" y="215" width="140" height="140" rx="10"/>
+    <rect x="410" y="215" width="140" height="140" rx="10"/>
+  </g>
+
+  <!-- TL: Filled circle -->
+  <circle cx="320" cy="125" r="35" fill="#222" stroke="none"/>
+
+  <!-- TR: Empty circle -->
+  <circle cx="480" cy="125" r="35" fill="none" stroke="#222" stroke-width="3"/>
+
+  <!-- BL: Filled triangle -->
+  <polygon points="320,90 285,160 355,160" fill="#222" stroke="none"/>
+
+  <!-- BR: ? -->
+  <text x="480" y="305" text-anchor="middle" font-size="55" font-weight="700" fill="#222">?</text>
+
+  <!-- Label -->
+  <text x="750" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#444" direction="rtl">
+    <tspan x="750" dy="0">בכל שורה: מלא ← ריק</tspan>
+    <tspan x="750" dy="24">בכל עמודה: עיגול ← משולש</tspan>
+  </text>
+</svg>

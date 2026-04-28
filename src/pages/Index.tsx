@@ -7,11 +7,12 @@ import ProgressBar from '@/components/ProgressBar';
 import ResultsScreen from '@/components/ResultsScreen';
 import HistoryScreen from '@/components/HistoryScreen';
 import TestTimer from '@/components/TestTimer';
+import ExamMode from '@/components/ExamMode';
 import { questions, QuestionCategory } from '@/data/questions';
 import { shuffleWithSeed } from '@/lib/seededRandom';
 import { saveTestResult } from '@/lib/progressStorage';
 
-type Screen = 'welcome' | 'category' | 'quiz' | 'results' | 'history';
+type Screen = 'welcome' | 'category' | 'quiz' | 'results' | 'history' | 'exam';
 
 const Index = () => {
   const [screen, setScreen] = useState<Screen>('welcome');
@@ -87,7 +88,11 @@ const Index = () => {
   };
 
   if (screen === 'welcome') {
-    return <WelcomeScreen onStart={handleStart} onHistory={() => setScreen('history')} />;
+    return <WelcomeScreen onStart={handleStart} onHistory={() => setScreen('history')} onExam={() => setScreen('exam')} />;
+  }
+
+  if (screen === 'exam') {
+    return <ExamMode onExit={() => setScreen('welcome')} />;
   }
 
   if (screen === 'history') {

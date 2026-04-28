@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#222">לאיזה כיוון יצביעו החצים?</text>
+  <g stroke="#333" stroke-width="4" fill="none">
+    <rect x="60" y="65" width="150" height="150" rx="12"/>
+    <rect x="240" y="65" width="150" height="150" rx="12"/>
+    <rect x="420" y="65" width="150" height="150" rx="12"/>
+    <rect x="600" y="65" width="150" height="150" rx="12"/>
+  </g>
+
+  <!-- Box 1: 4 arrows pointing OUTWARD from center (135,140) -->
+  <g stroke="#222" stroke-width="2.5" fill="#222">
+    <!-- Up arrow -->
+    <line x1="135" y1="140" x2="135" y2="100" stroke="#222" stroke-width="2.5"/>
+    <polygon points="135,95 129,108 141,108"/>
+    <!-- Down arrow -->
+    <line x1="135" y1="140" x2="135" y2="180" stroke="#222" stroke-width="2.5"/>
+    <polygon points="135,185 129,172 141,172"/>
+    <!-- Left arrow -->
+    <line x1="135" y1="140" x2="95" y2="140" stroke="#222" stroke-width="2.5"/>
+    <polygon points="90,140 103,134 103,146"/>
+    <!-- Right arrow -->
+    <line x1="135" y1="140" x2="175" y2="140" stroke="#222" stroke-width="2.5"/>
+    <polygon points="180,140 167,134 167,146"/>
+  </g>
+
+  <!-- Box 2: 4 arrows pointing INWARD toward center (315,140) -->
+  <g stroke="#222" stroke-width="2.5" fill="#222">
+    <!-- From top, pointing down -->
+    <line x1="315" y1="100" x2="315" y2="140" stroke="#222" stroke-width="2.5"/>
+    <polygon points="315,145 309,132 321,132"/>
+    <!-- From bottom, pointing up -->
+    <line x1="315" y1="180" x2="315" y2="140" stroke="#222" stroke-width="2.5"/>
+    <polygon points="315,135 309,148 321,148"/>
+    <!-- From left, pointing right -->
+    <line x1="275" y1="140" x2="315" y2="140" stroke="#222" stroke-width="2.5"/>
+    <polygon points="320,140 307,134 307,146"/>
+    <!-- From right, pointing left -->
+    <line x1="355" y1="140" x2="315" y2="140" stroke="#222" stroke-width="2.5"/>
+    <polygon points="310,140 323,134 323,146"/>
+  </g>
+
+  <!-- Box 3: 4 arrows pointing OUTWARD from center (495,140) -->
+  <g stroke="#222" stroke-width="2.5" fill="#222">
+    <!-- Up arrow -->
+    <line x1="495" y1="140" x2="495" y2="100" stroke="#222" stroke-width="2.5"/>
+    <polygon points="495,95 489,108 501,108"/>
+    <!-- Down arrow -->
+    <line x1="495" y1="140" x2="495" y2="180" stroke="#222" stroke-width="2.5"/>
+    <polygon points="495,185 489,172 501,172"/>
+    <!-- Left arrow -->
+    <line x1="495" y1="140" x2="455" y2="140" stroke="#222" stroke-width="2.5"/>
+    <polygon points="450,140 463,134 463,146"/>
+    <!-- Right arrow -->
+    <line x1="495" y1="140" x2="535" y2="140" stroke="#222" stroke-width="2.5"/>
+    <polygon points="540,140 527,134 527,146"/>
+  </g>
+
+  <!-- Box 4: ? -->
+  <text x="675" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#222">?</text>
+
+  <line x1="60" y1="250" x2="840" y2="250" stroke="#333" stroke-width="3"/>
+  <text x="450" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#444">כיוון החצים מתחלף</text>
+</svg>

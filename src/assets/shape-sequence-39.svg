@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#222">כמה נקודות בתא הבא?</text>
+  <g stroke="#333" stroke-width="4" fill="none">
+    <rect x="60" y="65" width="150" height="150" rx="12"/>
+    <rect x="240" y="65" width="150" height="150" rx="12"/>
+    <rect x="420" y="65" width="150" height="150" rx="12"/>
+    <rect x="600" y="65" width="150" height="150" rx="12"/>
+  </g>
+  <!-- Box 1: 1 dot centered -->
+  <circle cx="135" cy="140" r="8" fill="#222"/>
+  <!-- Box 2: 4 dots (2x2) -->
+  <circle cx="300" cy="125" r="7" fill="#222"/>
+  <circle cx="330" cy="125" r="7" fill="#222"/>
+  <circle cx="300" cy="155" r="7" fill="#222"/>
+  <circle cx="330" cy="155" r="7" fill="#222"/>
+  <!-- Box 3: 7 dots (4 top row, 3 bottom row) -->
+  <circle cx="468" cy="122" r="6.5" fill="#222"/>
+  <circle cx="485" cy="122" r="6.5" fill="#222"/>
+  <circle cx="502" cy="122" r="6.5" fill="#222"/>
+  <circle cx="519" cy="122" r="6.5" fill="#222"/>
+  <circle cx="476" cy="152" r="6.5" fill="#222"/>
+  <circle cx="494" cy="152" r="6.5" fill="#222"/>
+  <circle cx="512" cy="152" r="6.5" fill="#222"/>
+  <!-- Box 4: Question mark -->
+  <text x="675" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#222">?</text>
+  <line x1="60" y1="250" x2="840" y2="250" stroke="#333" stroke-width="3"/>
+  <text x="450" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#444">בכל שלב מתווספות 3 נקודות</text>
+</svg>

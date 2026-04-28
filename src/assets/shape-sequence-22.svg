@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#222">כמה מהעיגול יהיה מלא?</text>
+  <g stroke="#333" stroke-width="4" fill="none">
+    <rect x="60" y="65" width="150" height="150" rx="12"/>
+    <rect x="240" y="65" width="150" height="150" rx="12"/>
+    <rect x="420" y="65" width="150" height="150" rx="12"/>
+    <rect x="600" y="65" width="150" height="150" rx="12"/>
+  </g>
+  <!-- Box 1: 1/4 filled (top-right quarter) -->
+  <circle cx="135" cy="140" r="35" fill="none" stroke="#222" stroke-width="3"/>
+  <path d="M135,140 L135,105 A35,35 0 0,1 170,140 Z" fill="#222" stroke="none"/>
+  <!-- Box 2: 2/4 filled (right half) -->
+  <circle cx="315" cy="140" r="35" fill="none" stroke="#222" stroke-width="3"/>
+  <path d="M315,140 L315,105 A35,35 0 0,1 315,175 Z" fill="#222" stroke="none"/>
+  <!-- Box 3: 3/4 filled -->
+  <circle cx="495" cy="140" r="35" fill="none" stroke="#222" stroke-width="3"/>
+  <path d="M495,140 L495,105 A35,35 0 1,1 460,140 Z" fill="#222" stroke="none"/>
+  <!-- Box 4: ? -->
+  <text x="675" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#222">?</text>
+  <line x1="60" y1="250" x2="840" y2="250" stroke="#333" stroke-width="3"/>
+  <text x="450" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#444">העיגול מתמלא בכל שלב</text>
+</svg>

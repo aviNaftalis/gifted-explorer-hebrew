@@ -121,18 +121,20 @@ const ResultsScreen = ({ score, total, totalTime, onRestart }: ResultsScreenProp
         </div>
 
         {/* Time display */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="bg-muted rounded-xl p-3 mb-6 inline-flex items-center gap-2"
-        >
-          <span className="text-xl">⏱️</span>
-          <span className="font-bold text-lg tabular-nums">
-            {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
-          </span>
-          <span className="text-muted-foreground text-sm">זמן כולל</span>
-        </motion.div>
+        {totalTime > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="bg-muted rounded-xl p-3 mb-6 inline-flex items-center gap-2"
+          >
+            <span className="text-xl">⏱️</span>
+            <span className="font-bold text-lg tabular-nums">
+              {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
+            </span>
+            <span className="text-muted-foreground text-sm">זמן כולל</span>
+          </motion.div>
+        )}
 
         {/* Score bar */}
         <div className="mb-6">

@@ -123,7 +123,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col p-4 md:p-8">
       <div className="max-w-2xl mx-auto w-full mb-6">
         <div className="flex items-center justify-between mb-3">
-          <TestTimer isRunning={screen === 'quiz'} onTimeUpdate={handleTimeUpdate} />
+          {timerEnabled && <TestTimer isRunning={screen === 'quiz'} onTimeUpdate={handleTimeUpdate} />}
           <div className="text-sm font-semibold text-muted-foreground bg-card rounded-full px-3 py-1 border border-border">
             מבחן {testNumber}
           </div>
